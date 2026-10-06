@@ -6,6 +6,7 @@ public class Main {
         Actor actor1 = new Actor("Иван", "Петров", Gender.MALE, 182);
         Actor actor2 = new Actor("Анна", "Смирнова", Gender.FEMALE, 168);
         Actor actor3 = new Actor("Олег", "Сидоров", Gender.MALE, 175);
+        Actor actor4 = new Actor("Иван", "Сидоров", Gender.MALE, 175);
 
         Director director1 = new Director("Мария", "Иванова", Gender.FEMALE, 12);
         Director director2 = new Director("Сергей", "Кузнецов", Gender.MALE, 7);
@@ -25,12 +26,14 @@ public class Main {
         opera.addActor(actor2);
         ballet.addActor(actor2);
         ballet.addActor(actor3);
+        ballet.addActor(actor4);
 
         show.printActors();
         opera.printActors();
         ballet.printActors();
 
-        ballet.replaceActor(actor1, "Смирнова");
+        ballet.replaceActor(actor1, "Сидоров");
+        ballet.replaceActor(actor1, "Иван", "Сидоров");
         ballet.printActors();
 
         opera.replaceActor(actor3, "Кузнецов");

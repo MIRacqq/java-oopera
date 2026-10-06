@@ -29,13 +29,35 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String surname) {
+        int foundIndex = -1;
+        int count = 0;
+
         for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).getSurname().equals(surname)) {
+                foundIndex = i;
+                count++;
+            }
+        }
+
+        if (count == 0) {
+            System.out.println("Актёра с фамилией " + surname + " нет в спектакле «" + title + "»");
+        } else if (count > 1) {
+            System.out.println("В спектакле «" + title + "» несколько актёров с фамилией " + surname
+                    + ". Замена не выполнена, уточните, какого актёра заменить");
+        } else {
+            listOfActors.set(foundIndex, newActor);
+        }
+    }
+
+    public void replaceActor(Actor newActor, String name, String surname) {
+        for (int i = 0; i < listOfActors.size(); i++) {
+            Actor actor = listOfActors.get(i);
+            if (actor.getName().equals(name) && actor.getSurname().equals(surname)) {
                 listOfActors.set(i, newActor);
                 return;
             }
         }
-        System.out.println("Актёра с фамилией " + surname + " нет в спектакле «" + title + "»");
+        System.out.println("Актёра " + name + " " + surname + " нет в спектакле «" + title + "»");
     }
 
     public void printDirector() {
